@@ -1,0 +1,21 @@
+def top_k_frequent(nums, k)
+hash=Hash.new(0)
+nums.each do |ele|
+     hash[ele]+=1
+end
+new=hash.each.sort_by {|key,v| v} 
+return frequent(new,k)
+end
+def frequent(new,k)
+    i=0
+    j=new.length
+     new_arr=[]
+while i<k
+  new_arr<<new[j-1][0]
+    i+=1
+    j-=1
+end
+    return new_arr
+end
+
+puts top_k_frequent([1,1,1,2,2,3],2)
