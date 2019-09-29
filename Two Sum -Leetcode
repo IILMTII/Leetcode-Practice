@@ -1,0 +1,14 @@
+def two_sum(nums, target)
+hash = {}
+arr = []
+nums.each_with_index do |value,index|
+    y = target - value
+    if(hash.key?(value))
+        arr << hash[value]
+        arr << index
+        return arr
+    else
+     hash[y] = index
+    end
+end
+end
