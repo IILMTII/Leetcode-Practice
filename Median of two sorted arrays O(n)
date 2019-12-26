@@ -1,0 +1,71 @@
+# @param {Integer[]} nums1
+# @param {Integer[]} nums2
+# @return {Float}
+def find_median_sorted_arrays(nums1, nums2)
+    i=0
+    j=0
+    k=0
+    lenA=nums1.length
+    lenB=nums2.length
+    
+    mid= (lenA+lenB)/2
+    midE=-1
+    midEmO=-1
+    
+    while(i<lenA && j<lenB)
+        if(nums1[i] <= nums2[j])
+                if(k == mid-1)
+                    midEmO = nums1[i]
+                end
+                if(k == mid)
+                    midE = nums1[i]
+                    break;
+                end
+            
+                k+=1
+                i+=1
+        else
+                if(k == mid-1)
+                    midEmO = nums2[j]
+                end
+                if(k == mid)
+                    midE = nums2[j]
+                    break
+                end
+            
+                k+=1
+                j+=1
+        
+        end
+        
+        while(i<lenA)
+            if(k == mid-1)
+                midEmO = nums1[i]
+            end
+            if(k == mid)
+                midE = nums1[i]
+                break
+            end
+            k+=1
+            i+=1
+        end
+        
+        while(j<lenB)
+            if(k == mid-1)
+                midEmO = nums2[j]
+            end
+            if(k == mid)
+                midE = nums2[j]
+                break
+            end
+            k+=1
+            j+=1
+        end
+ 
+        if((lenA+lenB)%2 == 0)
+            return (midE + midEmO)/2
+        end
+        return midE
+    end
+    
+end
